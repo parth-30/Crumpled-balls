@@ -1,0 +1,40 @@
+
+const Engine = Matter.Engine;
+const World = Matter.World;
+const Bodies = Matter.Bodies;
+const Body = Matter.Body;
+const Render = Matter.Random;
+
+var paper, dustbinObject,groundObject, world;
+
+function setup() {
+	createCanvas(800, 700);
+	rectMode(CENTER);
+	engine = Engine.create();
+	world = engine.world;
+
+	paper = new Paper(200,450,70);
+	groundObject = new ground(width/2,670,width,20);
+	dustbinObject = new dustbin(1200,650);
+	
+	Engine.run(engine);
+  
+}
+
+
+function draw() {
+  rectMode(CENTER);
+  background(230);
+
+  paper.display();
+  groundObject.display();
+  dustbinObject.display();
+   
+}
+function keyPressed(){
+	if(keyCode === UP_ARROW){
+		Matter.Body.applyForce(paper.body.position,{x:130,y:-145})
+	}
+}
+
+
